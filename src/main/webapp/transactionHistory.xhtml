@@ -1,51 +1,95 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Historique des transactions</title>
+    <title>Historique des transactions - BankEase</title>
     <h:outputStylesheet library="css" name="bankease.css"/>
 </h:head>
 
 <h:body class="be-body">
 
+    <!-- ===== NAVBAR (IDENTIQUE AU DASHBOARD) ===== -->
+    <div class="be-navbar">
+        <div class="be-navbar-title">BankEase</div>
+
+        <div class="be-navbar-right">
+            Bonjour, #{loginBean.loggedClient.firstName}
+            <h:form style="display:inline">
+                <p:commandLink value="Déconnexion"
+                               action="#{loginBean.logout}"
+                               style="color:#38bdf8;font-weight:600"/>
+            </h:form>
+        </div>
+    </div>
+
+    <!-- ===== CONTENU PAGE ===== -->
     <div class="be-dashboard">
-        <p:card header="Historique des transactions">
 
-            <p:dataTable value="#{transactionHistoryBean.recent}" var="tx" stripedRows="true">
+        <!-- TITRE PAGE (BLANC, VISIBLE) -->
+        <h2 class="be-page-title" style="color:#ffffff;">
+            Historique des transactions
+        </h2>
 
+        <!-- CARTE -->
+        <p:card styleClass="be-transaction-card">
+
+            <p:dataTable value="#{transactionHistoryBean.recent}"
+                         var="tx"
+                         stripedRows="true"
+                         paginator="true"
+                         rows="5"
+                         styleClass="be-transactions-table">
+
+                <!-- DATE -->
                 <p:column headerText="Date">
                     #{tx['timestamp']}
                 </p:column>
 
+                <!-- TYPE -->
                 <p:column headerText="Type">
-                    <p:tag value="#{tx['type']}" severity="info"/>
+                    <p:tag value="#{tx['type']}"
+                           severity="#{tx['type'] eq 'DEPOSIT' ? 'success' : 'info'}"
+                           styleClass="be-tx-type"/>
                 </p:column>
 
+                <!-- MONTANT -->
                 <p:column headerText="Montant">
-                    #{tx['amount']} CHF
+                    <strong>#{tx['amount']} CHF</strong>
                 </p:column>
 
+                <!-- SOURCE -->
                 <p:column headerText="Source">
                     #{tx['source']}
                 </p:column>
 
+                <!-- DESTINATION -->
                 <p:column headerText="Destination">
-                    #{tx['target']}
+                    #{tx['destination']}
                 </p:column>
 
+                <!-- STATUT -->
                 <p:column headerText="Statut">
-                <span class="#{tx['status'] eq 'SUCCESS' ? 'be-status-success' : 'be-status-failed'}">
-                    #{tx['status']}
-                </span>
+                    <span class="#{tx['status'] eq 'SUCCESS'
+                                   ? 'be-status-success'
+                                   : 'be-status-failed'}">
+                        #{tx['status']}
+                    </span>
                 </p:column>
 
             </p:dataTable>
 
-            <h:link outcome="dashboard" value="Retour au dashboard"/>
+            <!-- ACTIONS -->
+            <div class="be-actions-footer">
+                <h:link outcome="dashboard"
+                        value="← Retour au dashboard"
+                        styleClass="be-back-link"/>
+            </div>
 
         </p:card>
+
     </div>
 
 </h:body>

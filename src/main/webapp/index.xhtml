@@ -11,8 +11,17 @@
 <h:body class="be-body">
 
     <div class="be-login-container">
+
+        <!-- LOGO SUR FOND BLEU (EN DEHORS DE LA CARTE) -->
+        <div class="be-login-logo-container">
+            <h:graphicImage library="images"
+                            name="bankease-logo.png"
+                            styleClass="be-login-logo"/>
+        </div>
+
         <h:form>
 
+            <!-- CARTE BLANCHE PLUS PETITE -->
             <p:card styleClass="be-card">
 
                 <h2 class="be-title">Connexion</h2>
@@ -29,9 +38,16 @@
 
                 <p:commandButton value="Se connecter"
                                  action="#{loginBean.login}"
+                                 ajax="false"
                                  styleClass="be-button"/>
 
+
                 <p:messages/>
+
+                <div class="be-register-link">
+                    Pas encore de compte ?
+                    <h:link value="Créer un compte" outcome="register"/>
+                </div>
 
             </p:card>
         </h:form>

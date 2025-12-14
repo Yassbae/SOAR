@@ -3,8 +3,8 @@
    ========================================= */
 
 :root {
-    --primary-color: #0d47a1;
-    --primary-hover: #1565c0;
+    --primary-color: #091a2a;
+    --primary-hover: #0f2a44;
     --secondary-color: #64748b;
     --success-color: #059669;
     --danger-color: #dc2626;
@@ -23,12 +23,23 @@ body,
 .be-body {
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+
     font-family: var(--font-family);
-    background-color: var(--background-color);
     color: var(--text-main);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
+
+    /* === REVOLUT-LIKE BACKGROUND (GLOBAL) === */
+    background: radial-gradient(
+            circle at top left,
+            #0f2a44 0%,
+            #091a2a 45%,
+            #050d14 100%
+    );
+
+    background-attachment: fixed;
 }
 
 *,
@@ -57,7 +68,12 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    background: radial-gradient(
+            circle at top left,
+            #0f2a44 0%,
+            #091a2a 40%,
+            #050d14 100%
+    );
     padding: 20px;
 }
 
@@ -65,10 +81,11 @@ a {
 .be-card.ui-card {
     border: none;
     box-shadow: var(--shadow-lg);
-    border-radius: 12px;
+    border-radius: 16px;
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
     background: white;
+    margin-top: 6rem;
 }
 
 .be-title {
@@ -107,12 +124,11 @@ a {
 
 .be-button.ui-button {
     width: 100%;
-    background: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    background: #0f2a44;
+    border: none;
     font-weight: 600;
     padding: 0.6rem 1rem;
     font-size: 1rem;
-    transition: background-color 0.2s;
 }
 
 .be-button.ui-button:hover {
@@ -139,8 +155,8 @@ a {
 
 /* ===== DASHBOARD LAYOUT ===== */
 .be-navbar {
-    background: white;
-    border-bottom: 1px solid var(--border-color);
+    background: transparent;
+    border-bottom: none;
     padding: 0.75rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -148,13 +164,13 @@ a {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: var(--shadow-sm);
+    box-shadow: none;
 }
 
 .be-navbar-title {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: #ffffff;
     letter-spacing: -0.05em;
 }
 
@@ -167,16 +183,16 @@ a {
 }
 
 .be-dashboard {
-    max-width: 1200px;
-    margin: 2rem auto;
+    max-width: 1100px;
+    margin: 3rem auto;
     padding: 0 1rem;
 }
 
 .be-dashboard-content h2 {
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
-    color: var(--text-main);
-    border-bottom: 2px solid var(--border-color);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -192,7 +208,7 @@ a {
 
 /* Override PrimeFaces card inside dashboard */
 .be-dashboard .ui-card {
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
     transition: transform 0.2s, box-shadow 0.2s;
@@ -355,4 +371,162 @@ a {
 .be-status-failed {
     color: var(--danger-color);
     font-weight: 600;
+}
+    /* ===== HISTORIQUE DES TRANSACTIONS BUTTON ===== */
+    .be-history-button {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        width: 100%;
+        max-width: 1100px;
+        margin: 2.5rem auto;
+
+        padding: 1rem 1.25rem;
+
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+
+        color: #ffffff;
+        font-size: 1.05rem;
+        font-weight: 600;
+
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(6px);
+
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .be-history-button:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.6);
+    }
+    /* ===== CREATE ACCOUNT LINK ===== */
+    .be-open-account {
+        display: inline-block;
+        margin-top: 2rem;
+
+        font-size: 1.1rem;
+        font-weight: 700;
+
+        color: #ffffff;
+        text-decoration: none;
+
+        border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+        padding-bottom: 0.15rem;
+
+        transition: opacity 0.2s ease, border-color 0.2s ease;
+    }
+
+    .be-open-account:hover {
+        opacity: 0.85;
+        border-color: #ffffff;
+    }
+
+/* ===== LOGIN LOGO ON DARK BACKGROUND ===== */
+.be-login-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(
+            circle at top left,
+            #0f2a44 0%,
+            #091a2a 40%,
+            #050d14 100%
+    );
+    padding: 20px;
+}
+
+.be-login-logo {
+    width: 240px;
+    max-width: 85%;
+    filter: brightness(0) invert(1); /* logo blanc */
+    opacity: 0.95;
+}
+/* =========================================
+   TRANSACTION HISTORY PAGE
+   ========================================= */
+
+/* Card container */
+.be-transaction-card.ui-card {
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+}
+
+/* Card header */
+.be-transaction-card .ui-card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* DataTable container */
+.be-transactions-table.ui-datatable {
+    margin-top: 1.5rem;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* Table header */
+.be-transactions-table thead th {
+    background: #f8fafc !important;
+    color: #475569 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.08em;
+    border: none !important;
+}
+
+/* Table rows */
+.be-transactions-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.be-transactions-table tbody tr:hover {
+    background: #f1f5f9;
+}
+
+/* Table cells */
+.be-transactions-table td {
+    font-size: 0.9rem;
+    color: #334155;
+}
+
+/* Transaction type badge */
+.be-tx-type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+/* Status */
+.be-status-success {
+    color: var(--success-color);
+    font-weight: 700;
+}
+
+.be-status-failed {
+    color: var(--danger-color);
+    font-weight: 700;
+}
+
+/* Back link */
+.be-back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.be-back-link:hover {
+    text-decoration: underline;
 }

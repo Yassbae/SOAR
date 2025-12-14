@@ -16,9 +16,11 @@
 
         <h:form>
 
+
             <p:card styleClass="be-card">
 
-                <h2 class="be-title">Activer mon compte</h2>
+
+                <h2 class="be-title">Créer mon compte</h2>
 
                 <p class="be-subtitle">
                     Veuillez saisir le code PIN reçu par courrier afin d’activer votre compte.
@@ -97,6 +99,7 @@
                     <p:inputText id="phone"
                                  value="#{createClientBean.phoneNumber}"
                                  styleClass="be-input"
+                                 maxlength="10"
                                  required="true"
                                  requiredMessage="Numéro de téléphone obligatoire"/>
                 </div>
