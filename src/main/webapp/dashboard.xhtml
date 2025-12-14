@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Dashboard - BankEase</title>
+    <h:outputStylesheet library="css" name="bankease.css"/>
+</h:head>
+
+<h:body class="be-body">
+
+    <div class="be-navbar">
+        <div class="be-navbar-title">BankEase</div>
+        <div class="be-navbar-right">
+            Bonjour, #{loginBean.loggedClient.firstName}
+            <h:form style="display:inline">
+                <p:commandLink value="Déconnexion" action="#{loginBean.logout}"/>
+            </h:form>
+        </div>
+    </div>
+
+    <div class="be-dashboard">
+        <div class="be-dashboard-content">
+
+            <h2>Vos comptes</h2>
+
+            <!-- CAROUSEL SWIPE -->
+            <p:carousel value="#{accountViewBean.accounts}"
+                        var="acc"
+                        numVisible="1"
+                        circular="true"
+                        styleClass="be-carousel">
+
+                <p:card styleClass="be-account-card">
+
+                    <p:tag value="#{acc['type']}" severity="info" styleClass="be-account-tag"/>
+
+                    <div class="be-account-title">
+                        #{acc['accountNumber']}
+                    </div>
+
+                    <div class="be-account-balance">
+                        #{acc['balance']} CHF
+                    </div>
+
+                    <div class="be-actions">
+                        <h:link outcome="deposit" styleClass="be-action-button primary">
+                            <i class="pi pi-plus-circle"></i> Dépôt
+                            <f:param name="acc" value="#{acc['accountNumber']}"/>
+                        </h:link>
+
+                        <h:link outcome="transfer" styleClass="be-action-button secondary">
+                            <i class="pi pi-send"></i> Virement
+                            <f:param name="src" value="#{acc['accountNumber']}"/>
+                        </h:link>
+                    </div>
+
+                </p:card>
+            </p:carousel>
+
+            <p:button outcome="transactionHistory"
+                      value="Historique des transactions"
+                      icon="pi pi-clock"
+                      styleClass="ui-button-secondary ui-button-outlined"
+                      style="width:100%; margin-top:1.5rem"/>
+
+            <h:link outcome="createAccount"
+                    value="Ouvrir un nouveau compte"
+                    style="display:block;margin-top:1.5rem"/>
+
+        </div>
+    </div>
+
+</h:body>
+</html>

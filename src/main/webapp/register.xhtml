@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Activation du compte - BankEase</title>
+    <h:outputStylesheet library="css" name="bankease.css"/>
+</h:head>
+
+<h:body class="be-body">
+
+    <div class="be-login-container">
+
+        <h:form>
+
+            <p:card styleClass="be-card">
+
+                <h2 class="be-title">Activer mon compte</h2>
+
+                <p class="be-subtitle">
+                    Veuillez saisir le code PIN reçu par courrier afin d’activer votre compte.
+                </p>
+
+                <!-- PIN -->
+                <div class="be-field">
+                    <label for="pin">Code PIN (10 chiffres)</label>
+                    <p:inputText id="pin"
+                                 value="#{createClientBean.pin}"
+                                 styleClass="be-input"
+                                 required="true"
+                                 maxlength="10"
+                                 requiredMessage="Code PIN obligatoire">
+                        <f:validateRegex pattern="\d{10}"/>
+                    </p:inputText>
+                </div>
+
+                <!-- USERNAME -->
+                <div class="be-field">
+                    <label for="username">Nom d'utilisateur</label>
+                    <p:inputText id="username"
+                                 value="#{createClientBean.username}"
+                                 styleClass="be-input"
+                                 required="true"
+                                 requiredMessage="Nom d'utilisateur obligatoire"/>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="be-field">
+                    <label for="password">Mot de passe</label>
+                    <p:password id="password"
+                                value="#{createClientBean.password}"
+                                feedback="true"
+                                styleClass="be-input"
+                                required="true"
+                                requiredMessage="Mot de passe obligatoire"/>
+                </div>
+
+                <!-- FIRST NAME -->
+                <div class="be-field">
+                    <label for="firstName">Prénom</label>
+                    <p:inputText id="firstName"
+                                 value="#{createClientBean.firstName}"
+                                 styleClass="be-input"
+                                 required="true"
+                                 requiredMessage="Prénom obligatoire"/>
+                </div>
+
+                <!-- LAST NAME -->
+                <div class="be-field">
+                    <label for="lastName">Nom</label>
+                    <p:inputText id="lastName"
+                                 value="#{createClientBean.lastName}"
+                                 styleClass="be-input"
+                                 required="true"
+                                 requiredMessage="Nom obligatoire"/>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="be-field">
+                    <label for="email">Email</label>
+                    <p:inputText id="email"
+                                 value="#{createClientBean.email}"
+                                 styleClass="be-input"
+                                 required="true"
+                                 requiredMessage="Email obligatoire"
+                                 validatorMessage="Format d’email invalide">
+                        <f:validateRegex pattern="^.+@.+\..+$"/>
+                    </p:inputText>
+                </div>
+
+                <!-- PHONE -->
+                <div class="be-field">
+                    <label for="phone">Téléphone</label>
+                    <p:inputText id="phone"
+                                 value="#{createClientBean.phoneNumber}"
+                                 styleClass="be-input"
+                                 required="true"
+                                 requiredMessage="Numéro de téléphone obligatoire"/>
+                </div>
+
+                <!-- SUBMIT -->
+                <p:commandButton value="Activer mon compte"
+                                 action="#{createClientBean.register}"
+                                 ajax="false"
+                                 styleClass="be-button"/>
+
+                <!-- MESSAGES -->
+                <p:messages showSummary="true"
+                            showDetail="false"
+                            styleClass="be-messages"/>
+
+                <!-- BACK -->
+                <div class="be-register-link">
+                    Déjà activé ?
+                    <h:link outcome="index" value="Se connecter"/>
+                </div>
+
+            </p:card>
+
+        </h:form>
+
+    </div>
+
+</h:body>
+</html>

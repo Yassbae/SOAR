@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Ouvrir un compte - BankEase</title>
+    <h:outputStylesheet library="css" name="bankease.css"/>
+</h:head>
+
+<h:body class="be-body">
+
+    <div class="be-dashboard">
+        <p:card header="Ouvrir un nouveau compte">
+
+            <h:form>
+
+                <div class="be-field">
+                    <label>Type de compte</label>
+                    <p:selectOneMenu value="#{createAccountBean.type}" required="true">
+                        <f:selectItem itemLabel="Sélectionner..." noSelectionOption="true"/>
+                        <f:selectItem itemLabel="Compte courant" itemValue="CURRENT"/>
+                        <f:selectItem itemLabel="Compte épargne" itemValue="SAVINGS"/>
+                        <f:selectItem itemLabel="Compte business" itemValue="BUSINESS"/>
+                    </p:selectOneMenu>
+                </div>
+
+                <p:commandButton value="Ouvrir le compte"
+                                 action="#{createAccountBean.open}"
+                                 ajax="false"
+                                 styleClass="be-button"/>
+
+                <p:messages/>
+
+                <h:link outcome="dashboard" value="Retour"/>
+
+            </h:form>
+
+        </p:card>
+    </div>
+
+</h:body>
+</html>

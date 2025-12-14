@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Historique des transactions</title>
+    <h:outputStylesheet library="css" name="bankease.css"/>
+</h:head>
+
+<h:body class="be-body">
+
+    <div class="be-dashboard">
+        <p:card header="Historique des transactions">
+
+            <p:dataTable value="#{transactionHistoryBean.recent}" var="tx" stripedRows="true">
+
+                <p:column headerText="Date">
+                    #{tx['timestamp']}
+                </p:column>
+
+                <p:column headerText="Type">
+                    <p:tag value="#{tx['type']}" severity="info"/>
+                </p:column>
+
+                <p:column headerText="Montant">
+                    #{tx['amount']} CHF
+                </p:column>
+
+                <p:column headerText="Source">
+                    #{tx['source']}
+                </p:column>
+
+                <p:column headerText="Destination">
+                    #{tx['target']}
+                </p:column>
+
+                <p:column headerText="Statut">
+                <span class="#{tx['status'] eq 'SUCCESS' ? 'be-status-success' : 'be-status-failed'}">
+                    #{tx['status']}
+                </span>
+                </p:column>
+
+            </p:dataTable>
+
+            <h:link outcome="dashboard" value="Retour au dashboard"/>
+
+        </p:card>
+    </div>
+
+</h:body>
+</html>

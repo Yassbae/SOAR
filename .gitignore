@@ -1,0 +1,41 @@
+############################
+# Maven
+############################
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+############################
+# IntelliJ IDEA
+############################
+.idea/
+*.iml
+*.iws
+out/
+
+############################
+# Logs & temporaires
+############################
+*.log
+*.tmp
+*.swp
+*.swo
+
+############################
+# OS spécifiques
+############################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+############################
+# Docker / runtime
+############################
+*.pid
+*.seed

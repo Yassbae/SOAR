@@ -1,0 +1,358 @@
+/* =========================================
+   BANKEASE PROFESSIONAL DESIGN SYSTEM
+   ========================================= */
+
+:root {
+    --primary-color: #0d47a1;
+    --primary-hover: #1565c0;
+    --secondary-color: #64748b;
+    --success-color: #059669;
+    --danger-color: #dc2626;
+    --background-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body,
+.be-body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/* ===== UTILITIES ===== */
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+a {
+    transition: color 0.15s ease-in-out;
+}
+
+/* ===== AUTH PAGES (Login/Register) ===== */
+.be-login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    padding: 20px;
+}
+
+/* Overriding PrimeFaces Card for Login */
+.be-card.ui-card {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    background: white;
+}
+
+.be-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.be-field {
+    margin-bottom: 1.25rem;
+}
+
+.be-field label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.be-input.ui-inputtext {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.15s ease;
+    font-size: 0.95rem;
+}
+
+.be-input.ui-inputtext:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+}
+
+.be-button.ui-button {
+    width: 100%;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.be-button.ui-button:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.be-register-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.be-register-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.be-register-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== DASHBOARD LAYOUT ===== */
+.be-navbar {
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.be-navbar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.05em;
+}
+
+.be-navbar-right {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.be-dashboard {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.be-dashboard-content h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* DASHBOARD CARDS (Account Cards) */
+.be-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Override PrimeFaces card inside dashboard */
+.be-dashboard .ui-card {
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+}
+
+.be-dashboard .ui-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.be-account-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+}
+
+.be-account-type {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 700;
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.be-account-balance {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.be-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+.be-button-small {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    background: var(--success-color);
+    transition: filter 0.2s;
+    display: inline-block;
+}
+
+.be-button-small:hover {
+    filter: brightness(0.9);
+}
+
+.be-button-secondary {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    background: var(--secondary-color);
+    transition: filter 0.2s;
+    display: inline-block;
+}
+
+.be-button-secondary:hover {
+    filter: brightness(0.9);
+}
+
+/* Transaction History Table Override */
+.ui-datatable .ui-datatable-header {
+    background: white !important;
+    border: none !important;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 1rem !important;
+}
+
+.ui-datatable thead th {
+    background: #f9fafb !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.05em;
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.ui-datatable tbody td {
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 1rem !important;
+    font-size: 0.9rem;
+}
+
+/* ===== CAROUSEL SWIPE ===== */
+.be-carousel {
+    margin-bottom: 2rem;
+}
+
+.be-account-card.ui-card {
+    border-radius: 16px;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #ffffff, #f9fafb);
+    box-shadow: var(--shadow-lg);
+}
+
+.be-account-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+}
+
+/* ACTION BUTTONS */
+.be-action-button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.be-action-button.primary {
+    background: linear-gradient(135deg, var(--success-color), #10b981);
+    color: white;
+}
+
+.be-action-button.secondary {
+    background: linear-gradient(135deg, var(--secondary-color), #94a3b8);
+    color: white;
+}
+
+.be-action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* STATUS */
+.be-status-success {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.be-status-failed {
+    color: var(--danger-color);
+    font-weight: 600;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Connexion - BankEase</title>
+    <h:outputStylesheet library="css" name="bankease.css"/>
+</h:head>
+
+<h:body class="be-body">
+
+    <div class="be-login-container">
+        <h:form>
+
+            <p:card styleClass="be-card">
+
+                <h2 class="be-title">Connexion</h2>
+
+                <div class="be-field">
+                    <label>Nom d'utilisateur</label>
+                    <p:inputText value="#{loginBean.username}" required="true"/>
+                </div>
+
+                <div class="be-field">
+                    <label>Mot de passe</label>
+                    <p:password value="#{loginBean.password}" required="true"/>
+                </div>
+
+                <p:commandButton value="Se connecter"
+                                 action="#{loginBean.login}"
+                                 styleClass="be-button"/>
+
+                <p:messages/>
+
+            </p:card>
+        </h:form>
+    </div>
+
+</h:body>
+</html>
